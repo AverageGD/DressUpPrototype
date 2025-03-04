@@ -2,18 +2,10 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
-        int maxRefreshRate = Screen.currentResolution.refreshRate;
 
-        if (maxRefreshRate >= 120)
-        {
-            Application.targetFrameRate = 120;
-        }
-        else
-        {
-            Application.targetFrameRate = 60; // Если 120 Гц нет, ставим 60
-        }
+        Application.targetFrameRate = (int)Screen.currentResolution.refreshRateRatio.value;
 
         QualitySettings.vSyncCount = 0;
     }
